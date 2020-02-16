@@ -2,7 +2,7 @@ body {
   background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png) 
 }
   
-.box {
+.cell {
   display: inline-block;       
   border: 1px solid black;
   width: 15px;
@@ -11,11 +11,11 @@ body {
   margin-bottom: -1px;
   }
 
-.off {
+.dead {
   background-color: lightgray;
 }
 
-.on {
+.alive {
   background-color: green;
 }
   
