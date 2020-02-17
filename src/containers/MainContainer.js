@@ -17,9 +17,9 @@ class MainContainer extends React.Component {
             gridState: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
         }
     }
+   
 
     selectCell = (row, col) => {
-        console.log("in select cell");
         let gridCopy = arrayClone(this.state.gridState);
         gridCopy[row][col] = !gridCopy[row][col];
         this.setState(
@@ -27,6 +27,26 @@ class MainContainer extends React.Component {
                 gridState : gridCopy
             }
         )
+    }
+
+    seed = () => {
+        let gridCopy = arrayClone(this.state.gridState);
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < this.cols; j++) {
+                if (Math.floor(Math.random() * 4) === 1) {
+                    gridCopy[i][j] = true;
+                }
+            }
+        }
+        this.setState(
+            {
+                gridState : gridCopy
+            }
+        )
+    }
+
+    componentDidMount() {
+        this.seed();
     }
 
     render() {
