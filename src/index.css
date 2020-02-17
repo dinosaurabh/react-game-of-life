@@ -19,7 +19,7 @@ body {
   background-color: green;
 }
   
-.box:hover { 
+.cell:hover { 
   background: #00CCFF;
 }
 

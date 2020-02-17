@@ -12,6 +12,8 @@ class GridComponent extends React.Component {
     }
 
     render() {
+        console.log("rows", this.rows);
+        console.log("cols", this.cols);
         const width = this.cols * 16;
         const rowsArray = [];
         for (let i = 0; i < this.rows; i++) {
@@ -22,6 +24,9 @@ class GridComponent extends React.Component {
                     <CellComponent
                         key = {cellId}
                         cellState = {cellState}
+                        selectCell = {this.props.selectCell}
+                        row = {i}
+                        col = {j}
                     />
 
                 )

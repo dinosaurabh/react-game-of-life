@@ -18,11 +18,23 @@ class MainContainer extends React.Component {
         }
     }
 
+    selectCell = (row, col) => {
+        console.log("in select cell");
+        let gridCopy = arrayClone(this.state.gridState);
+        gridCopy[row][col] = !gridCopy[row][col];
+        this.setState(
+            {
+                gridState : gridCopy
+            }
+        )
+    }
+
     render() {
         return (
             <div>
                 <GridComponent
                     gridState = {this.state.gridState}
+                    selectCell = {this.selectCell}
                 />
                 <div>
                     <h1> Generation : {this.state.generation} </h1>
@@ -30,6 +42,10 @@ class MainContainer extends React.Component {
             </div>
         )
     }
+}
+
+function arrayClone(arr) {
+    return JSON.parse(JSON.stringify(arr));
 }
 
 export default MainContainer
