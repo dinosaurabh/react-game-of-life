@@ -14,7 +14,7 @@ class GridComponent extends React.Component {
     render() {
         // console.log("rows", this.rows);
         // console.log("cols", this.cols);
-        const width = this.cols * 16;
+        const width = this.cols * 14;
         const rowsArray = [];
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {

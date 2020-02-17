@@ -55,7 +55,8 @@ class MainContainer extends React.Component {
         let gridCopy = arrayClone(this.state.gridState);
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {
-                let aliveNeighbours = numberOfAliveNeighbours(grid, i, j)
+                let aliveNeighbours = numberOfAliveNeighbours(grid, i, j);
+                // console.log(i, j, aliveNeighbours);
                 // if the current cell is alive
                 if (gridCopy[i][j]) {
                     // the cell dies of underpopulation
@@ -89,6 +90,15 @@ class MainContainer extends React.Component {
         clearInterval(this.intervalId);
     }
 
+    resetButton = () =>{
+        let newGrid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+        this.setState(
+            {
+                generation : 0,
+                gridState: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
+            }
+        )
+    }
 
     componentDidMount() {
         this.seed();
@@ -100,6 +110,7 @@ class MainContainer extends React.Component {
                 <ButtonsComponent
                     playButton = {this.playButton}
                     pauseButton = {this.pauseButton}
+                    resetButton = {this.resetButton}
                 />
                 <GridComponent
                     gridState = {this.state.gridState}
@@ -125,11 +136,15 @@ function numberOfAliveNeighbours(grid, i, j) {
         for (let c = 0; c < offset.length; c++) {
             let rowIndex = i + offset[r];
             let colIndex = j + offset[c];
-            if (isValidIndex(grid,rowIndex, colIndex) && grid[rowIndex][colIndex]) {
-                count++;
+            if (r === 0 && c === 0) {
+                continue;
+            }
+            if (isValidIndex(grid, rowIndex, colIndex) && grid[rowIndex][colIndex]) {
+                count = count + 1;
             }
         }
     }
+
     return count;
 }
 

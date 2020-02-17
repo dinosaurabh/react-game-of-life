@@ -14,6 +14,9 @@ class ButtonComponent extends React.Component {
                     <button onClick = {this.props.pauseButton}>
                         Pause
                     </button>
+                    <button onClick = {this.props.resetButton}>
+                        Reset
+                    </button>
                 </ButtonToolbar>
             </div>
         )
